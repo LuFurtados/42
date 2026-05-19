@@ -98,10 +98,24 @@ void	ft_div_mod(int a, int b, int *div, int *mod)
 	}
 }
 
+-- ft_iterative_factorial
 
+int ft_iterative_factorial(int nb)
+{
+	int	nb_factorial;
 
+	if (nb = 0)
+		nb_factorial = 1;
+	elif
+		while (nb => 1) 
+		{
+          nb_factorial *= nb;
+          nb--;
+	else
+	  nb_factorial = 0;
+    }
+    
+    return (nb_factorial);
+}
 
-
-
-
-
+-- ft_recursive_factorial
