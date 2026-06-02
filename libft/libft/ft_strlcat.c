@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:59:25 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/02 16:02:54 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/06/02 19:51:13 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,4 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
-}
-
-int	main(void)
-{
-	return (0);
 }

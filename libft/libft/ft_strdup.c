@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 18:44:37 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/02 19:02:50 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/06/02 19:50:54 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,4 @@ char	*ft_strdup(const char *s)
 	}
 	new_s[i] = '\0';
 	return (new_s);
-}
-
-int	main(void)
-{
-	return (0);
 }

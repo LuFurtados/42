@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 15:51:37 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/02 19:51:21 by lfurtado         ###   ########.fr       */
+/*   Created: 2026/06/02 16:53:57 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/06/02 18:42:46 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	src_len;
-	size_t	i;
+	size_t			i;
+	size_t			nbytes;
+	unsigned char	*ptr;
 
-	src_len = ft_strlen(src);
-	i = 0;
-	if (size == 0)
-		return (src_len);
-	while ((i < (size - 1)) && (src[i]))
+	if (nmemb == 0 || size == 0)
+		nbytes = 1;
+	else
 	{
-		dest[i] = src[i];
+		nbytes = nmemb * size;
+		if (nbytes / nmemb != size)
+			return (NULL);
+	}
+	ptr = (unsigned char *)malloc(nbytes);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < nbytes)
+	{
+		ptr[i] = 0;
 		i++;
 	}
-	dest[i] = '\0';
-	return (src_len);
+	return (ptr);
 }

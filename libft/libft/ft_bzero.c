@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 19:43:55 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/02 15:41:33 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/06/02 19:50:27 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,4 @@
 void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
-}
-
-int	main(void)
-{
-	return (0);
 }
