@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 15:46:48 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/02 15:54:40 by lfurtado         ###   ########.fr       */
+/*   Created: 2026/06/02 16:53:57 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/06/02 18:42:46 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
-	size_t				i;
+	size_t			i;
+	size_t			nbytes;
+	unsigned char	*ptr;
 
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	i = 0;
-	if (d > s)
-	{
-		while (n > 0)
-		{
-			n--;
-			d[n] = s[n];
-		}
-	}
+	if (nmemb == 0 || size == 0)
+		nbytes = 1;
 	else
 	{
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		nbytes = nmemb * size;
+		if (nbytes / nmemb != size)
+			return (NULL);
 	}
-	return (dest);
+	ptr = (unsigned char *)malloc(nbytes);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < nbytes)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return (ptr);
 }

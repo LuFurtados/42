@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 15:46:48 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/02 15:54:40 by lfurtado         ###   ########.fr       */
+/*   Created: 2026/06/03 21:03:58 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/06/04 14:27:23 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
-	size_t				i;
+	size_t	i;
+	size_t	j;
+	size_t	total_len;
+	char	*new_str;
 
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
+	if (!s1 || !s2)
+		return (NULL);
+	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	new_str = ft_calloc(1, total_len);
+	if (!new_str)
+		return (NULL);
 	i = 0;
-	if (d > s)
+	j = 0;
+	while (s1[i])
 	{
-		while (n > 0)
-		{
-			n--;
-			d[n] = s[n];
-		}
+		new_str[i] = s1[i];
+		i++;
 	}
-	else
+	while (s2[j])
 	{
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		new_str[i] = s2[j];
+		i++;
+		j++;
 	}
-	return (dest);
+	return (new_str);
+}
+
+int	main(void)
+{
+	return (0);
 }
