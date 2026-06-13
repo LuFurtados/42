@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:39:41 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/09 20:38:37 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/06/10 18:44:19 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*ft_is_zero(long n)
 {
 	char	*str;
 
-	str = ft_calloc(1, 2);
+	str = ft_calloc(2, sizeof(char));
 	if (!str)
 		return (NULL);
 	str[n] = '0';
@@ -52,7 +52,7 @@ char	*ft_itoa(int n)
 	if (n_new == 0)
 		return (ft_is_zero(n_new));
 	i = ft_count(n_new);
-	str = ft_calloc(1, i + 1);
+	str = ft_calloc(i + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	if (n_new < 0)

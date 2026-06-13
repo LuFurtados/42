@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 14:39:05 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/09 21:11:43 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/06/10 18:52:44 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (s1[i_beg] != '\0' && (ft_remove(s1[i_beg], set)))
 		i_beg++;
 	if (s1[i_beg] == '\0')
-		return (ft_calloc(1, 1));
+		return (ft_calloc(1, sizeof(char)));
 	i_end = ft_strlen(s1) - 1;
 	while (i_end > i_beg && (ft_remove(s1[i_end], set)))
 		i_end--;

@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/03 18:08:26 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/10 18:53:30 by lfurtado         ###   ########.fr       */
+/*   Created: 2026/06/11 13:03:23 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/06/11 13:29:30 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	len_s;
-	size_t	i;
-	char	*sub_str;
+	long	number;
 
-	i = 0;
-	len_s = ft_strlen(s);
-	if (start > len_s)
-		return (ft_calloc(1, sizeof(char)));
-	if (len > (len_s - start))
-		len = (len_s - start);
-	sub_str = ft_calloc(len + 1, sizeof(char));
-	if (!sub_str)
-		return (NULL);
-	while (i < len)
+	number = n;
+	if (number == 0)
 	{
-		sub_str[i] = s[start];
-		i++;
-		start++;
+		ft_putchar_fd('0', fd);
+		return ;
 	}
-	sub_str[i] = '\0';
-	return (sub_str);
+	if (number < 0)
+	{
+		ft_putchar_fd('-', fd);
+		number = -number;
+	}
+	if (number >= 10)
+		ft_putnbr_fd(number / 10, fd);
+	ft_putchar_fd((number % 10) + '0', fd);
 }

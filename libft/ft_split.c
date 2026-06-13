@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:36:44 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/06/09 20:48:36 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:33:52 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,24 @@ static void	ft_free(char **str_free, size_t n_block)
 static size_t	ft_count_blocks(char const *str, char c)
 {
 	size_t	i;
-	size_t	i_words;
+	size_t	n_words;
 	size_t	is_word;
 
 	i = 0;
 	is_word = 0;
-	i_words = 0;
+	n_words = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] != c && is_word == 0)
 		{
-			i_words++;
+			n_words++;
 			is_word = 1;
 		}
 		if (str[i] == c)
 			is_word = 0;
 		i++;
 	}
-	return (i_words);
+	return (n_words);
 }
 
 static char	**ft_put_word(char **str_split, char const *s, char c)
