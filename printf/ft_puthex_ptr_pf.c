@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr_pf.c                                     :+:      :+:    :+:   */
+/*   ft_puthex_ptr_pf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/01 16:03:15 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/07/01 20:34:11 by lfurtado         ###   ########.fr       */
+/*   Created: 2026/07/01 15:58:10 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/07/01 20:34:29 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr_pf(void *ptr)
+int	ft_puthex_ptr_pf(unsigned long n)
 {
-	int				i;
-	unsigned long	n;
+	int		count_recursion;
+	int		count_current;
+	char	*str_hex;
 
-	n = (unsigned long)ptr;
-	i = 0;
-	if (n == 0)
-	{
-		i = i + ft_putstr_pf("(nil)");
-		return (i);
-	}
-	i = ft_putstr_pf("0x");
-	i = i + ft_puthex_ptr_pf(n);
-	return (i);
+	str_hex = "0123456789abcdef";
+	count_recursion = 0;
+	if (n >= 16)
+		count_recursion = (ft_puthex_ptr_pf(n / 16));
+	count_current = (ft_putchar_pf(str_hex[n % 16]));
+	return (count_recursion + count_current);
 }
