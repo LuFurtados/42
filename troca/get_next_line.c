@@ -1,3 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/21 15:14:03 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/07/21 15:14:03 by lfurtado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+char	*ft_read_line(int fd, char *leftover, int delimiter)
+{
+	char	*buffer;
+	ssize_t	bytes_read;
+
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+		return (NULL);
+	bytes_read = 1;
+	while (bytes_read > 0)
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+		{
+			free(buffer);
+			free(leftover);
+			return (NULL);
+		}
+		buffer[bytes_read] = '\0';
+		leftover = ft_append_leftover(leftover, buffer);
+		if (!leftover || ft_strchr(buffer, delimiter) || bytes_read == 0)
+			break ;
+	}
+	free(buffer);
+	return (leftover);
+}
 
 char	*ft_create_line(const char *s, const char *delimiter)
 {
@@ -16,7 +56,9 @@ char	*ft_update_leftover(char *s, const char *delimiter)
 	size_t	start;
 	char	*new_leftover;
 
-	if (!s || !delimiter || *(delimiter + 1) == '\0')
+	if (!s)
+		return (NULL);
+	if (!delimiter || *(delimiter + 1) == '\0')
 	{
 		free(s);
 		return (NULL);
@@ -39,26 +81,19 @@ char	*ft_append_leftover(char *leftover, char *buffer)
 char	*get_next_line(int fd)
 {
 	static char	*leftover;
-	char		buffer[BUFFER_SIZE + 1];
 	char		*delimiter;
 	char		*line;
-	ssize_t		bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-	{
-		free(leftover);
-		return (leftover = NULL);
-	}
-	bytes_read = 1;
-	while (!ft_strchr(leftover, '\n') && bytes_read > 0)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-			return (NULL);
-		buffer[bytes_read] = '\0';
-		leftover = ft_append_leftover(leftover, buffer);
-	}
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	delimiter = ft_strchr(leftover, '\n');
+	if (!delimiter)
+	{
+		leftover = ft_read_line(fd, leftover, '\n');
+		if (!leftover)
+			return (NULL);
+		delimiter = ft_strchr(leftover, '\n');
+	}
 	line = ft_create_line(leftover, delimiter);
 	leftover = ft_update_leftover(leftover, delimiter);
 	return (line);

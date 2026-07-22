@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/21 15:15:16 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/07/21 15:15:16 by lfurtado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "get_next_line.h"
 
-## encontra o demilitador de linha
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -17,28 +30,10 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-## set memoria com 0
-
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*ptr;
-	size_t			i;
-
-	ptr = s;
-	i = 0;
-	while (i < n)
-	{
-		ptr[i] = c;
-		i++;
-	}
-	return (s);
-}
-
-## Reserva memoria
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t			nbytes;
+	size_t			i;
 	unsigned char	*ptr;
 
 	if (nmemb == 0 || size == 0)
@@ -52,16 +47,18 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ptr = (unsigned char *)malloc(nbytes);
 	if (!ptr)
 		return (NULL);
-	ft_memset(ptr, 0, nbytes);
+	i = 0;
+	while (i < nbytes)
+		ptr[i++] = 0;
 	return (ptr);
 }
-
-# Conta o tamanho da string 
 
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
 		i++;
@@ -74,7 +71,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*sub_str;
 
-	i = 0;
+	if (!s)
+		return (NULL);
 	len_s = ft_strlen(s);
 	if (start > len_s)
 		return (ft_calloc(1, sizeof(char)));
@@ -83,42 +81,36 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub_str = ft_calloc(len + 1, sizeof(char));
 	if (!sub_str)
 		return (NULL);
-	while (i < len)
+	i = 0;
+	while (i < len && s[start + i])
 	{
-		sub_str[i] = s[start];
+		sub_str[i] = s[start + i];
 		i++;
-		start++;
 	}
-	sub_str[i] = '\0';
 	return (sub_str);
 }
 
-# Junta as strings
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
 	size_t	j;
-	size_t	total_len;
 	char	*new_str;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
-	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	new_str = ft_calloc(total_len, sizeof(char));
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
+	new_str = ft_calloc(i + j + 1, sizeof(char));
 	if (!new_str)
 		return (NULL);
 	i = 0;
-	j = 0;
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		new_str[i] = s1[i];
 		i++;
 	}
+	j = 0;
 	while (s2[j])
-	{
-		new_str[i] = s2[j];
-		i++;
-		j++;
-	}
+		new_str[i++] = s2[j++];
 	return (new_str);
 }
