@@ -30,5 +30,6 @@ int	stack_is_sorted(t_stack *stack);
 void	stack_clear(t_stack **stack);
 void 	stack_add_back(t_stack **stack, t_stack *new_node);
 void	stack_print(t_stack *stack);
+void	update_position(t_stack *stack);
 
 #endif

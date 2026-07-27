@@ -1,17 +1,6 @@
 
 #include "push_swap.h"
 
-t_stack *stack_last(t_stack *node)
-{
-    t_stack *current;
-
-    if (!node)
-        return (NULL);
-    current = node;
-    while (current->next)
-        current = current->next;
-    return (current);
-}
 int	stack_size(t_stack *stack)
 {
     int i;
@@ -26,6 +15,18 @@ int	stack_size(t_stack *stack)
     }
     return (i);
 }
+t_stack *stack_last(t_stack *node)
+{
+    t_stack *current;
+
+    if (!node)
+        return (NULL);
+    current = node;
+    while (current->next)
+        current = current->next;
+    return (current);
+}
+
 int	stack_is_sorted(t_stack *stack)
 {
     t_stack *current;
