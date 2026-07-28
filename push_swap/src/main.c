@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/27 16:14:30 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/07/27 16:15:04 by lfurtado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -6,7 +17,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 
 	stack_a = NULL;
-	if(!build_stack(argc, argv, &stack_a))
+	if (!build_stack(argc, argv, &stack_a))
 	{
 		stack_print(stack_a);
 		return (1);
@@ -18,7 +29,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	else
-	stack_print(stack_a);
+		stack_print(stack_a);
 	stack_clear(&stack_a);
 	return (0);
 }

@@ -6,6 +6,10 @@ CFLAGS      = -Wall -Wextra -Werror
 LIBFT_DIR   = libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 
+OPERATIONS  = operations/push.c \
+              operations/swap.c \
+              operations/rotate.c 
+
 PARSER      = parser/build_stack.c \
               parser/check_duplicate.c \
               parser/check_overflow.c \
@@ -14,6 +18,7 @@ PARSER      = parser/build_stack.c \
 STACK       = stack/stack_add.c \
               stack/stack_clear.c \
               stack/stack_create.c \
+              stack/stack_metadata.c \
               stack/stack_utils.c
 
 UTILS       = utils/stack_print.c
@@ -21,7 +26,8 @@ UTILS       = utils/stack_print.c
 SRC         = src/main.c \
               $(PARSER) \
               $(STACK) \
-              $(UTILS)
+              $(UTILS) \
+              $(OPERATIONS)
 
 OBJS        = $(SRC:.c=.o)
 
