@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 21:21:45 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/07/27 21:21:47 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/07/28 18:53:00 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack
 
 t_stack	*stack_new(int value);
 t_stack	*stack_last(t_stack *node);
+t_stack	*find_cheapest(t_stack *stack_b);
 int		build_stack(int argc, char **argv, t_stack **stack_a);
 int		validate_number(char *str);
 int		check_overflow(char *str);
@@ -53,5 +54,8 @@ void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 int		find_min_position(t_stack *stack);
 void	update_target_position(t_stack *stack_a, t_stack *stack_b);
+void	update_cost(t_stack *stack_a, t_stack *stack_b);
+void	move_cheapest(t_stack **a, t_stack **b, t_stack *cheapest);
+void	update_metadata(t_stack *stack_a, t_stack *stack_b);
 
 #endif

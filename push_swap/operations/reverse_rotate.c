@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/28 16:27:58 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/07/28 16:28:07 by lfurtado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -18,6 +29,7 @@ static void	reverse_rotate(t_stack **stack)
 	last->next = first;
 	*stack = last;
 }
+
 void	rra(t_stack **a)
 {
 	if (!a || !*a || !(*a)->next)

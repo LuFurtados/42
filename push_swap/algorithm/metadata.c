@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicate.c                                  :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/27 21:23:42 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/07/28 16:30:02 by lfurtado         ###   ########.fr       */
+/*   Created: 2026/07/28 18:42:10 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/07/28 18:43:51 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_duplicate(t_stack *stack, int value)
+void	update_metadata(t_stack *stack_a, t_stack *stack_b)
 {
-	while (stack)
-	{
-		if (stack->value == value)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
+	update_position(stack_a);
+	update_position(stack_b);
+	update_target_position(stack_a, stack_b);
+	update_cost(stack_a, stack_b);
 }

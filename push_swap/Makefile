@@ -6,9 +6,14 @@ CFLAGS      = -Wall -Wextra -Werror
 LIBFT_DIR   = libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 
+ALGORITHM   = algorithm/cheapest.c \
+              algorithm/cost.c \
+              algorithm/move.c
+
 OPERATIONS  = operations/push.c \
               operations/swap.c \
-              operations/rotate.c 
+              operations/rotate.c \
+              operations/reverse_rotate.c
 
 PARSER      = parser/build_stack.c \
               parser/check_duplicate.c \
@@ -27,7 +32,8 @@ SRC         = src/main.c \
               $(PARSER) \
               $(STACK) \
               $(UTILS) \
-              $(OPERATIONS)
+              $(OPERATIONS) \
+              $(ALGORITHM)
 
 OBJS        = $(SRC:.c=.o)
 
