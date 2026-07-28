@@ -21,9 +21,9 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	int				position;
+	int				target_position;
 	int				cost_a;
 	int				cost_b;
-	int				target_position;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -48,6 +48,9 @@ void	pb(t_stack **a, t_stack **b);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 int		find_min_position(t_stack *stack);
 void	update_target_position(t_stack *stack_a, t_stack *stack_b);
 
