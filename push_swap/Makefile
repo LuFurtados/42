@@ -8,7 +8,9 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 
 ALGORITHM   = algorithm/cheapest.c \
               algorithm/cost.c \
-              algorithm/move.c
+              algorithm/metadata.c \
+              algorithm/move.c \
+              algorithm/final_rotate.c
 
 OPERATIONS  = operations/push.c \
               operations/swap.c \
@@ -20,6 +22,11 @@ PARSER      = parser/build_stack.c \
               parser/check_overflow.c \
               parser/validate_number.c
 
+SORT        = sort/sort_five.c \
+              sort/sort_stacks.c \
+              sort/sort_tiny.c \
+              sort/sort_turk.c
+
 STACK       = stack/stack_add.c \
               stack/stack_clear.c \
               stack/stack_create.c \
@@ -29,11 +36,12 @@ STACK       = stack/stack_add.c \
 UTILS       = utils/stack_print.c
 
 SRC         = src/main.c \
-              $(PARSER) \
-              $(STACK) \
-              $(UTILS) \
+              $(ALGORITHM) \
               $(OPERATIONS) \
-              $(ALGORITHM)
+              $(PARSER) \
+              $(SORT) \
+              $(STACK) \
+              $(UTILS)
 
 OBJS        = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 21:21:45 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/07/28 18:53:00 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:43:52 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,11 @@ void	update_target_position(t_stack *stack_a, t_stack *stack_b);
 void	update_cost(t_stack *stack_a, t_stack *stack_b);
 void	move_cheapest(t_stack **a, t_stack **b, t_stack *cheapest);
 void	update_metadata(t_stack *stack_a, t_stack *stack_b);
+void	sort_stacks(t_stack **stack_a, t_stack **stack_b);
+void	sort_two(t_stack **stack_a);
+void	sort_three(t_stack **stack_a);
+void	sort_five(t_stack **stack_a, t_stack **stack_b);
+void	turk_sort(t_stack **stack_a, t_stack **stack_b);
+void	final_rotate(t_stack **stack_a);
 
 #endif

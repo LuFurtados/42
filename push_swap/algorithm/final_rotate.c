@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   final_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/27 16:14:30 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/07/29 16:47:04 by lfurtado         ###   ########.fr       */
+/*   Created: 2026/07/29 16:39:44 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/07/29 16:39:47 by lfurtado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	final_rotate(t_stack **stack_a)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	int	min_pos;
+	int	size;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 2)
-		return (0);
-	if (!build_stack(argc, argv, &stack_a))
-		return (1);
-	update_index(stack_a);
-	if (stack_is_sorted(stack_a))
+	if (!stack_a || !*stack_a)
+		return ;
+	update_position(*stack_a);
+	min_pos = find_min_position(*stack_a);
+	size = stack_size(*stack_a);
+	if (min_pos <= size / 2)
 	{
-		stack_clear(&stack_a);
-		return (0);
+		while (min_pos > 0)
+		{
+			ra(stack_a);
+			min_pos--;
+		}
 	}
-	sort_stacks(&stack_a, &stack_b);
-	stack_clear(&stack_a);
-	stack_clear(&stack_b);
-	return (0);
+	else
+	{
+		while (min_pos < size)
+		{
+			rra(stack_a);
+			min_pos++;
+		}
+	}
 }
