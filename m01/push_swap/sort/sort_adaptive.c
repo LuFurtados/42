@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*   sort_adaptive.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlandi <dlandi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/01 14:22:01 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/08/01 16:19:36 by dlandi           ###   ########.fr       */
+/*   Created: 2026/08/01 15:31:55 by dlandi            #+#    #+#             */
+/*   Updated: 2026/08/01 19:07:58 by dlandi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_smallest(t_stack **a, t_stack **b, t_bench *bench)
+void	sort_complex(t_stack **a, t_stack **b, t_bench *bench)
 {
-	int	min_pos;
-	int	size;
-
-	update_position(*a);
-	min_pos = find_min_position(*a);
-	size = stack_size(*a);
-	if (min_pos <= size / 2)
-	{
-		while (min_pos-- > 0)
-			ra(a, bench);
-	}
-	else
-	{
-		while (min_pos++ < size)
-			rra(a, bench);
-	}
-	pb(a, b, bench);
+	turk_sort(a, b, bench);
 }
 
-void	sort_simple(t_stack **a, t_stack **b, t_bench *bench)
+void	sort_adaptive(t_stack **a, t_stack **b, t_bench *bench)
 {
-	while (stack_size(*a) > 3)
-		push_smallest(a, b, bench);
-	sort_three(a, bench);
-	while (*b)
-		pa(a, b, bench);
+	int		size;
+	float	disorder;
+
+	size = stack_size(*a);
+	if (size <= 3)
+	{
+		sort_three(a, bench);
+		return ;
+	}
+	if (size <= 5)
+	{
+		sort_five(a, b, bench);
+		return ;
+	}
+	disorder = calculate_disorder(*a);
+	if (disorder < 0.2)
+		sort_simple(a, b, bench);
+	else if (disorder < 0.5)
+		sort_medium(a, b, bench);
+	else
+		sort_complex(a, b, bench);
 }

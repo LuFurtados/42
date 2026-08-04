@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_search.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dlandi <dlandi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/01 14:23:37 by lfurtado          #+#    #+#             */
+/*   Updated: 2026/08/01 16:35:52 by dlandi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -22,7 +33,7 @@ int	find_max_position(t_stack *stack)
 	return (position);
 }
 
-void	rotate_to_top_b(t_stack **b, int pos)
+void	rotate_to_top_b(t_stack **b, int pos, t_bench *bench)
 {
 	int	size;
 
@@ -31,7 +42,7 @@ void	rotate_to_top_b(t_stack **b, int pos)
 	{
 		while (pos > 0)
 		{
-			rb(b);
+			rb(b, bench);
 			pos--;
 		}
 	}
@@ -39,7 +50,7 @@ void	rotate_to_top_b(t_stack **b, int pos)
 	{
 		while (pos < size)
 		{
-			rrb(b);
+			rrb(b, bench);
 			pos++;
 		}
 	}

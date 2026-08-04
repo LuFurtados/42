@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlandi <dlandi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 16:16:18 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/07/27 16:16:56 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/07/29 18:33:52 by dlandi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	stack_clear(t_stack **stack)
 	t_stack	*current;
 	t_stack	*next;
 
-	if (!*stack || !stack)
+	if (!stack || !*stack)
 		return ;
 	current = *stack;
 	while (current)
