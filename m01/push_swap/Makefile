@@ -10,7 +10,8 @@ ALGORITHM   = algorithm/cheapest.c \
               algorithm/cost.c \
               algorithm/metadata.c \
               algorithm/move.c \
-              algorithm/final_rotate.c
+              algorithm/final_rotate.c \
+              algorithm/disorder.c
 
 OPERATIONS  = operations/push.c \
               operations/swap.c \
@@ -21,7 +22,7 @@ PARSER      = parser/build_stack.c \
               parser/check_duplicate.c \
               parser/check_overflow.c \
               parser/validate_number.c \
-              parser/flags.c 
+              parser/flags.c
 
 SORT        = sort/sort_five.c \
               sort/sort_stacks.c \
@@ -29,19 +30,22 @@ SORT        = sort/sort_five.c \
               sort/sort_turk.c \
               sort/sort_simple.c \
               sort/sort_medium.c \
-              sort/dispatcher.c 
+              sort/sort_adaptive.c \
+              sort/dispatcher.c
 
 STACK       = stack/stack_add.c \
               stack/stack_clear.c \
               stack/stack_create.c \
               stack/stack_metadata.c \
-              stack/stack_utils.c 
+              stack/stack_utils.c
 
 UTILS       = utils/stack_print.c \
               utils/stack_search.c \
-              utils/error.c 
+              utils/error.c \
+              utils/benchmark.c
 
 SRC         = src/main.c \
+              src/args.c \
               $(ALGORITHM) \
               $(OPERATIONS) \
               $(PARSER) \

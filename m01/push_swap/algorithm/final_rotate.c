@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   final_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfurtado <lfurtado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlandi <dlandi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 16:39:44 by lfurtado          #+#    #+#             */
-/*   Updated: 2026/07/29 16:39:47 by lfurtado         ###   ########.fr       */
+/*   Updated: 2026/08/01 16:36:42 by dlandi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	final_rotate(t_stack **stack_a)
+void	final_rotate(t_stack **stack_a, t_bench *bench)
 {
 	int	min_pos;
 	int	size;
@@ -26,7 +26,7 @@ void	final_rotate(t_stack **stack_a)
 	{
 		while (min_pos > 0)
 		{
-			ra(stack_a);
+			ra(stack_a, bench);
 			min_pos--;
 		}
 	}
@@ -34,7 +34,7 @@ void	final_rotate(t_stack **stack_a)
 	{
 		while (min_pos < size)
 		{
-			rra(stack_a);
+			rra(stack_a, bench);
 			min_pos++;
 		}
 	}
